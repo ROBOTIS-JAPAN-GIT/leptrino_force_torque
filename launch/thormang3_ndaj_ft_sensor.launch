@@ -1,0 +1,20 @@
+<launch>
+
+<group ns="/thormang3/sensor">
+
+  <arg name="comport_r" default="/dev/ffs080ya1" />
+  <node pkg="leptrino_force_torque" type="leptrino_force_torque" name="leptrino_ft_r" output="screen">
+  	<param name="com_port" value="$(arg comport_r)" />
+	<remap from="leptrino_ft_r/force_torque" to="ft_right_hand/raw"/>
+  </node>
+
+  <arg name="comport_l" default="/dev/ffs080ya2" />
+  <node pkg="leptrino_force_torque" type="leptrino_force_torque" name="leptrino_ft_l" output="screen">
+  	<param name="com_port" value="$(arg comport_l)" />
+	<remap from="leptrino_ft_l/force_torque" to="ft_left_hand/raw"/>  	  	
+  </node>
+
+</group>
+
+</launch>  
+ 
